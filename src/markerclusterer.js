@@ -63,7 +63,7 @@
  * @constructor
  * @extends google.maps.OverlayView
  */
-function MarkerClusterer(map, opt_markers, opt_options) {
+export function MarkerClusterer(map, opt_markers, opt_options) {
   // MarkerClusterer implements google.maps.OverlayView interface. We use the
   // extend function to extend MarkerClusterer with google.maps.OverlayView
   // because it might not always be available when the code is defined so we
@@ -800,7 +800,7 @@ MarkerClusterer.prototype.createClusters_ = function() {
  * @constructor
  * @ignore
  */
-function Cluster(markerClusterer) {
+export function Cluster(markerClusterer) {
   this.markerClusterer_ = markerClusterer;
   this.map_ = markerClusterer.getMap();
   this.gridSize_ = markerClusterer.getGridSize();
@@ -1025,7 +1025,7 @@ Cluster.prototype.updateIcon = function() {
  * @extends google.maps.OverlayView
  * @ignore
  */
-function ClusterIcon(cluster, styles, opt_padding) {
+export function ClusterIcon(cluster, styles, opt_padding) {
   cluster.getMarkerClusterer().extend(ClusterIcon, google.maps.OverlayView);
 
   this.styles_ = styles;
@@ -1264,53 +1264,3 @@ ClusterIcon.prototype.createCss = function(pos) {
   return style.join('');
 };
 
-
-// Export Symbols for Closure
-// If you are not going to compile with closure then you can remove the
-// code below.
-// window['MarkerClusterer'] = MarkerClusterer;
-MarkerClusterer.prototype['addMarker'] = MarkerClusterer.prototype.addMarker;
-MarkerClusterer.prototype['addMarkers'] = MarkerClusterer.prototype.addMarkers;
-MarkerClusterer.prototype['clearMarkers'] =
-    MarkerClusterer.prototype.clearMarkers;
-MarkerClusterer.prototype['fitMapToMarkers'] =
-    MarkerClusterer.prototype.fitMapToMarkers;
-MarkerClusterer.prototype['getCalculator'] =
-    MarkerClusterer.prototype.getCalculator;
-MarkerClusterer.prototype['getGridSize'] =
-    MarkerClusterer.prototype.getGridSize;
-MarkerClusterer.prototype['getExtendedBounds'] =
-    MarkerClusterer.prototype.getExtendedBounds;
-MarkerClusterer.prototype['getMap'] = MarkerClusterer.prototype.getMap;
-MarkerClusterer.prototype['getMarkers'] = MarkerClusterer.prototype.getMarkers;
-MarkerClusterer.prototype['getMaxZoom'] = MarkerClusterer.prototype.getMaxZoom;
-MarkerClusterer.prototype['getStyles'] = MarkerClusterer.prototype.getStyles;
-MarkerClusterer.prototype['getTotalClusters'] =
-    MarkerClusterer.prototype.getTotalClusters;
-MarkerClusterer.prototype['getTotalMarkers'] =
-    MarkerClusterer.prototype.getTotalMarkers;
-MarkerClusterer.prototype['redraw'] = MarkerClusterer.prototype.redraw;
-MarkerClusterer.prototype['removeMarker'] =
-    MarkerClusterer.prototype.removeMarker;
-MarkerClusterer.prototype['removeMarkers'] =
-    MarkerClusterer.prototype.removeMarkers;
-MarkerClusterer.prototype['resetViewport'] =
-    MarkerClusterer.prototype.resetViewport;
-MarkerClusterer.prototype['repaint'] =
-    MarkerClusterer.prototype.repaint;
-MarkerClusterer.prototype['setCalculator'] =
-    MarkerClusterer.prototype.setCalculator;
-MarkerClusterer.prototype['setGridSize'] =
-    MarkerClusterer.prototype.setGridSize;
-MarkerClusterer.prototype['setMaxZoom'] =
-    MarkerClusterer.prototype.setMaxZoom;
-MarkerClusterer.prototype['onAdd'] = MarkerClusterer.prototype.onAdd;
-MarkerClusterer.prototype['draw'] = MarkerClusterer.prototype.draw;
-
-Cluster.prototype['getCenter'] = Cluster.prototype.getCenter;
-Cluster.prototype['getSize'] = Cluster.prototype.getSize;
-Cluster.prototype['getMarkers'] = Cluster.prototype.getMarkers;
-
-ClusterIcon.prototype['onAdd'] = ClusterIcon.prototype.onAdd;
-ClusterIcon.prototype['draw'] = ClusterIcon.prototype.draw;
-ClusterIcon.prototype['onRemove'] = ClusterIcon.prototype.onRemove;
