@@ -1265,4 +1265,4 @@ ClusterIcon.prototype.createCss = function (pos) {
   return style.join('');
 };
 
-module.export = MarkerClusterer;
+module.exports = MarkerClusterer;
